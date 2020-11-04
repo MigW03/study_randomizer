@@ -3,6 +3,23 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Estudo sortido</title>
+		<link rel="stylesheet" href="main.css" />
 	</head>
-	<body></body>
+	<body onload="renderList()">
+		<div id="addTopic">
+			<input placeholder="Teste" id="input" />
+			<button type="submit" id="button" onclick="addTopic()">
+				Salvar
+			</button>
+		</div>
+
+		<div id="showTopics">
+			<h4 id="listTitle">Seus tópicos</h4>
+			<ul id="topicsList"></ul>
+		</div>
+		<h3 id="teste"></h3>
+
+		<script src="main.js"></script>
+	</body>
 </html>
