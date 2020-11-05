@@ -8,17 +8,28 @@
 	</head>
 	<body onload="renderList()">
 		<div id="addTopic">
-			<input placeholder="Teste" id="input" />
+			<div id="input-div">
+				<label for="input">Novo tópico:</label>
+				<input placeholder="Teste" id="input" />
+			</div>
 			<button type="submit" id="button" onclick="addTopic()">
 				Salvar
 			</button>
+		</div>
+
+		<div class="randomize-div">
+			<button id="randomize-button">Sortear conteúdo</button>
+		</div>
+
+		<div class="topic-result">
+			<h3 id="resultTopic">dsaodmso</h3>
+			<button id="finishButton">Concluir estudo</button>
 		</div>
 
 		<div id="showTopics">
 			<h4 id="listTitle">Seus tópicos</h4>
 			<ul id="topicsList"></ul>
 		</div>
-		<h3 id="teste"></h3>
 
 		<script src="main.js"></script>
 	</body>

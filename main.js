@@ -2,12 +2,28 @@ const input = document.getElementById("input");
 const button = document.getElementById("button");
 const list = document.getElementById("topicsList");
 
-function renderList() {
-	let fullList = JSON.parse(localStorage.getItem("topicsList")) || [];
-	console.log(`retireved: ${fullList}`);
+var fullList = JSON.parse(localStorage.getItem("topicsList")) || [];
 
+input.addEventListener("keypress", (event) => {
+	if (event.keyCode === 13) {
+		addTopic();
+	}
+});
+
+function renderList() {
+	list.innerHTML = "";
 	fullList.forEach((item) => {
 		let li = document.createElement("li");
+		li.addEventListener("contextmenu", (event) => {
+			let rightClick = confirm(
+				"Deseja deletar permanentemente esse tópico?"
+			);
+			if (rightClick == true) {
+				deleteTopic(fullList.indexOf(item));
+			}
+			event.preventDefault();
+		}),
+			false;
 		let nodeText = document.createTextNode(item);
 		li.setAttribute("class", "list-item");
 
@@ -17,13 +33,22 @@ function renderList() {
 }
 
 function addTopic() {
-	let initialList = JSON.parse(localStorage.getItem("topicsList")) || [];
-	console.log(initialList);
-	let text = input.value;
+	let textArray = input.value.split(",");
+	input.value = "";
 
-	let finalList = initialList.push(text);
-	console.log(finalList);
-
-	localStorage.setItem("topicsList", JSON.stringify(finalList));
+	textArray.forEach((item) => {
+		fullList.unshift(item);
+	});
 	renderList();
+	saveToStorage();
+}
+
+function deleteTopic(pos) {
+	fullList.splice(pos, 1);
+	renderList();
+	saveToStorage();
+}
+
+function saveToStorage() {
+	localStorage.setItem("topicsList", JSON.stringify(fullList));
 }
