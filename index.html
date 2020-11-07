@@ -10,7 +10,7 @@
 		<div id="addTopic">
 			<div id="input-div">
 				<label for="input">Novo tópico:</label>
-				<input placeholder="Teste" id="input" />
+				<input placeholder="Novo tópico" id="input" />
 			</div>
 			<button type="submit" id="button" onclick="addTopic()">
 				Salvar
@@ -18,11 +18,13 @@
 		</div>
 
 		<div class="randomize-div">
-			<button id="randomize-button">Sortear conteúdo</button>
+			<button id="randomize-button" onclick="getTopic()">
+				Sortear conteúdo
+			</button>
 		</div>
 
-		<div class="topic-result">
-			<h3 id="resultTopic">dsaodmso</h3>
+		<div id="topic-result">
+			<h3 id="resultTopic"></h3>
 			<button id="finishButton">Concluir estudo</button>
 		</div>
 

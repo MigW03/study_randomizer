@@ -71,9 +71,52 @@
 }
 
 #button {
-	padding: 9px;
+	padding: 9px 12px;
 	font-family: Arial;
-	font-size: 14px;
+	font-size: 1.2rem;
+	color: #fafafa;
 	border-radius: 12px;
 	border: 0px;
+	background-color: #8a8a8a;
+}
+
+.randomize-div {
+	display: flex;
+	width: calc(100% - 18vw);
+	height: 15vh;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+#randomize-button {
+	padding: 10px 14px;
+	font-family: Arial;
+	font-size: 1.3rem;
+	border-radius: 15px;
+	border: 2px solid black;
+}
+
+#topic-result {
+	display: none;
+	flex-direction: column;
+	width: calc(100% - 18vw);
+	justify-content: center;
+	align-items: center;
+	height: 20vh;
+}
+
+#resultTopic {
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 1.85rem;
+}
+
+#finishButton {
+	padding: 8px;
+	border-radius: 8px;
+	border: 1px solid #333333;
+	margin-top: 15px;
+	font-family: Arial;
+	font-size: 1rem;
 }

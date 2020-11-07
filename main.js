@@ -1,6 +1,9 @@
 const input = document.getElementById("input");
 const button = document.getElementById("button");
 const list = document.getElementById("topicsList");
+const resultDiv = document.getElementById("topic-result");
+const resultText = document.getElementById("resultTopic");
+const finishButton = document.getElementById("finishButton");
 
 var fullList = JSON.parse(localStorage.getItem("topicsList")) || [];
 
@@ -33,6 +36,10 @@ function renderList() {
 }
 
 function addTopic() {
+	if (!input.value) {
+		return alert("Você precisa digitar algo para presseguir");
+	}
+
 	let textArray = input.value.split(",");
 	input.value = "";
 
@@ -51,4 +58,17 @@ function deleteTopic(pos) {
 
 function saveToStorage() {
 	localStorage.setItem("topicsList", JSON.stringify(fullList));
+}
+
+function getTopic() {
+	if (!fullList.length) {
+		return alert("Sua lista está vazia, adicone algo primeiro");
+	}
+
+	// for (i = 0; i < fullList.length; i++) {
+	let total = fullList.length;
+	let randomNum = Number(Math.floor(Math.random() * total));
+	resultText.innerHTML = fullList[randomNum];
+	// }
+	resultDiv.style.display = "flex";
 }
