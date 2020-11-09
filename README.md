@@ -1,6 +1,7 @@
 # Randomizador de estudos
 
-####Feito para estudantes organizarem seus estudos
+#### Feito para estudantes organizarem seus estudos
+
 <br/>
 
 O usuário pode:
