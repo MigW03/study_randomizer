@@ -5,6 +5,7 @@ const resultDiv = document.getElementById("topic-result");
 const resultText = document.getElementById("resultTopic");
 const finishButton = document.getElementById("finishButton");
 
+var randomizeAllowed = true;
 var fullList = JSON.parse(localStorage.getItem("topicsList")) || [];
 
 input.addEventListener("keypress", (event) => {
@@ -44,7 +45,9 @@ function addTopic() {
 	input.value = "";
 
 	textArray.forEach((item) => {
-		fullList.unshift(item);
+		if (item.trim()) {
+			fullList.unshift(item);
+		}
 	});
 	renderList();
 	saveToStorage();
@@ -65,10 +68,23 @@ function getTopic() {
 		return alert("Sua lista está vazia, adicone algo primeiro");
 	}
 
-	// for (i = 0; i < fullList.length; i++) {
-	let total = fullList.length;
-	let randomNum = Number(Math.floor(Math.random() * total));
-	resultText.innerHTML = fullList[randomNum];
-	// }
-	resultDiv.style.display = "flex";
+	if (randomizeAllowed) {
+		let total = fullList.length;
+		let randomNum = Number(Math.floor(Math.random() * total));
+		resultText.innerHTML = fullList[randomNum];
+		let itemIndex = fullList.indexOf(fullList[randomNum]);
+
+		finishButton.setAttribute(
+			"onclick",
+			`deleteTopic(${itemIndex}),
+			randomizeAllowed = true,
+			resultDiv.style.display = 'none'
+			`
+		);
+
+		resultDiv.style.display = "flex";
+		randomizeAllowed = false;
+	} else {
+		alert("Você precisa concluir seu esudo atual antes de sortear um novo");
+	}
 }
